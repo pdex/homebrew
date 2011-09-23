@@ -1,14 +1,14 @@
 require 'formula'
 
-class Sleepwatcher <Formula
-  url 'http://www.bernhard-baehr.de/sleepwatcher_2.1.tgz'
+class Sleepwatcher < Formula
+  url 'http://www.bernhard-baehr.de/sleepwatcher_2.1.1.tgz'
   homepage 'http://www.bernhard-baehr.de/'
-  md5 'd4ace64e2e978f4f289ca4dddd21c6f2'
+  md5 '6770e615a89874fa07a8bdfc94ead19f'
 
   def install
     # Adjust Makefile to build native binary only
     inreplace "sources/Makefile" do |s|
-      s.gsub! /^(CFLAGS)_PPC.*$/, "\\1 = #{ENV['CFLAGS']} -prebind"
+      s.gsub! /^(CFLAGS)_PPC.*$/, "\\1 = #{ENV.cflags} -prebind"
       s.gsub! /^(CFLAGS_X86)/, "#\\1"
       s.change_make_var! "BINDIR", "$(PREFIX)/sbin"
       s.change_make_var! "MANDIR", "$(PREFIX)/share/man"

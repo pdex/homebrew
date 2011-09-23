@@ -1,6 +1,6 @@
 require 'formula'
 
-class Xdelta <Formula
+class Xdelta < Formula
   url 'http://xdelta.googlecode.com/files/xdelta3.0y.tar.gz'
   version '3.0y'
   homepage 'http://xdelta.org'
@@ -8,6 +8,6 @@ class Xdelta <Formula
 
   def install
     system "make"
-    bin.install("xdelta3")
+    bin.install "xdelta3"
   end
 end
